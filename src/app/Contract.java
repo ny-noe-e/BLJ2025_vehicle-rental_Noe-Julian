@@ -16,4 +16,8 @@ public class Contract{
         this.endDate = endDate;
         this.condition = condition;
     }
+
+    public void WrteToFile(){
+        
+    }
 }
