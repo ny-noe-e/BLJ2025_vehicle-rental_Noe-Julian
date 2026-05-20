@@ -1,5 +1,10 @@
 package app;
 
-public class Person {
+import java.time.LocalDate;
 
+public class Person {
+    LocalDate birthYear;
+    String name;
+    String firstName;
+    String adress;
 }
