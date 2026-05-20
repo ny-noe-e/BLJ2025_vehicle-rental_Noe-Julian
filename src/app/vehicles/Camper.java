@@ -1,6 +1,8 @@
 package app.vehicles;
 
-public class Camper {
+import app.Vehicle;
+
+public class Camper extends Vehicle {
     double weight;
 
 }
