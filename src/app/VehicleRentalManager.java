@@ -1,6 +1,6 @@
 package app;
 
-import exceptions.PersonInDenyListException;
+import exceptions.ObjectAlreadyInListException;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -12,7 +12,7 @@ public class VehicleRentalManager {
 
     public void addPersonToDenyList(Person person) {
         if (person == null ) throw new NullPointerException("No person defined in parameter");
-        else if (isInDenyList(person)) throw new PersonInDenyListException("Person is already in deny list");
+        else if (isInDenyList(person)) throw new ObjectAlreadyInListException("Person is already in deny list");
         else denyList.add(person);
     }
 
@@ -37,7 +37,12 @@ public class VehicleRentalManager {
         return contracts.add(new Contract(customer, vehicle, startDate, endDate, condition));
     }
 
-    public Vehicle addVehicle(Vehicle vehicle){
-
+    public void addVehicle(Vehicle vehicle){
+        if (vehicle == null) throw new NullPointerException ("No vehicle defined in parameter");
+        for (Vehicle findVehicle: vehicles){
+            if (findVehicle.licensePlate.equals(vehicle.licensePlate)) throw new
+                    ObjectAlreadyInListException("License plate already registered");
+        }
+        vehicles.add(vehicle);
     }
 }
