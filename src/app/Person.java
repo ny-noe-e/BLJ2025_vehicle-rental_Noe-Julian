@@ -48,7 +48,15 @@ public class Person {
         return name;
     }
 
+    public LocalDate getBirthYear() {
+        return birthYear;
+    }
+
     public String getAddress() {
         return address;
+    }
+
+    public int getiD() {
+        return iD;
     }
 }

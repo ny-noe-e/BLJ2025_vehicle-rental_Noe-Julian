@@ -97,4 +97,12 @@ public class App {
         }
         return null;
     }
+
+    public List<Person> getPersons() {
+        return persons;
+    }
+
+    public List<Vehicle> getVehicles() {
+        return vehicles;
+    }
 }

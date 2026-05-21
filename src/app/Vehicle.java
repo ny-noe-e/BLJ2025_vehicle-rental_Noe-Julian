@@ -47,4 +47,8 @@ public class Vehicle {
     public String getBrand() {
         return brand;
     }
+
+    public String getLicensePlate() {
+        return licensePlate;
+    }
 }

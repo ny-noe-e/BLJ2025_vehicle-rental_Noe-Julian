@@ -48,14 +48,14 @@ public class Contract {
         long rentPeriod = ChronoUnit.DAYS.between(startDate, endDate) + 1;
         double total = rentPeriod * contract.vehicle.getPricePerDay();
         StringBuilder contractFile = new StringBuilder();
-        contractFile.append(contract.customer.getName() + contract.customer.getFirstName() + "\n" + contract.customer.getAddress() + "\n");
+        contractFile.append(" " + contract.customer.getName() + contract.customer.getFirstName() + "\n " + contract.customer.getAddress() + "\n");
         contractFile.append("\n Noser Garage \n Address \n " + separationLine);
         contractFile.append("\n Vehicle: " + contract.vehicle.getBrand() + " " + vehicle.getModel());
         contractFile.append("\n Price per day: " + contract.vehicle.getPricePerDay());
-        contractFile.append("\n\n Start of rent: " + contract.startDate + "\n" + "End of rent: " + contract.endDate);
+        contractFile.append("\n\n Start of rent: " + contract.startDate + "\n" + " End of rent: " + contract.endDate);
         contractFile.append("\n Total amount of days: " + rentPeriod);
         contractFile.append("\n Total price: " + total + "\n" + separationLine + "\n");
-        contractFile.append(" Condition: " + contract.condition);
+        contractFile.append(" Condition: " + contract.condition + "\n"+separationLine);
         return contractFile;
     }
 }
