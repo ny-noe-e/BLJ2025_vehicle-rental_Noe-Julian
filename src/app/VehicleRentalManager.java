@@ -7,15 +7,13 @@ import java.util.List;
 
 public class VehicleRentalManager {
     private List<Vehicle> vehicles;
-    private List<Vehicle> availableVehicles;
     private List<Contract> contracts;
     private List<Person> customerList;
     private List<Person> denyList;
 
-    public VehicleRentalManager(List<Vehicle> vehicles, List<Vehicle> availableVehicles, List<Contract> contracts,
+    public VehicleRentalManager(List<Vehicle> vehicles, List<Contract> contracts,
                                 List<Person> customerList, List<Person> denyList){
         this.vehicles = vehicles;
-        this.availableVehicles = availableVehicles;
         this.contracts = contracts;
         this.customerList = customerList;
         this.denyList = denyList;
@@ -23,7 +21,6 @@ public class VehicleRentalManager {
 
     public VehicleRentalManager() {
         this.vehicles = new ArrayList<>();
-        this.availableVehicles = new ArrayList<>();
         this.contracts = new ArrayList<>();
         this.customerList = new ArrayList<>();
         this.denyList = new ArrayList<>();
@@ -44,39 +41,52 @@ public class VehicleRentalManager {
         if (startDate == null) throw new NullPointerException("No start-date defined in parameter");
         if (endDate == null) throw new NullPointerException("No end-date defined in parameter");
         if (condition == null) condition = "No condition defined";
-        Contract contract = new Contract(customer, vehicle, startDate, endDate, condition);
+        Contract contract = new Contract(customer, vehicle, startDate, endDate, condition, denyList);
         contracts.add(contract);
-        availableVehicles.remove(vehicle);
         return contract;
     }
 
-    public void addVehicle(Vehicle vehicle){
-        if (vehicle == null) throw new NullPointerException ("No vehicle defined in parameter");
-        if (objectIsExistingInList(vehicle, vehicles)) throw new
+    public void addVehicle(String licensePlate, String brand, String model, double pricePerDay){
+        if (licensePlate == null || brand == null || model == null) throw new NullPointerException("Parameter is Null");
+        if (licensePlate.isEmpty() || brand.isEmpty() || model.isEmpty())
+            throw new IllegalArgumentException("Parameter is Empty");
+        Vehicle v = new Vehicle(licensePlate, brand, model, pricePerDay);
+
+        if (objectIsExistingInList(v, vehicles)) throw new
                     ObjectAlreadyInListException("License plate already registered");
-        vehicles.add(vehicle);
-        availableVehicles.add(vehicle);
+        vehicles.add(v);
+    }
+    public boolean VehicleIsAvailableInTime (Vehicle vehicle, LocalDate startTime, LocalDate endTime){
+       //not implemented yet
+        return false;
     }
     public void returnVehicle(Vehicle vehicle){
         //not implemented yet
     }
 
-    public void addCustomer(Person customer){
-        if (objectIsExistingInList(customer, customerList))
+    public void addCustomer(  LocalDate birthYear,
+    String name,
+    String firstName,
+    String address,
+    int iD){
+        if (name == null || firstName == null || address == null) throw new NullPointerException("Parameter is Null");
+        if (name.isEmpty() || firstName.isEmpty() || address.isEmpty())
+            throw new IllegalArgumentException("Parameter is Empty");
+        Person p = new Person(iD, birthYear, name, firstName, address);
+        if (objectIsExistingInList(p, customerList))
             throw new ObjectAlreadyInListException("Customer already registered");
-       customerList.add(customer);
+       customerList.add(p);
     }
 
-    public List<Vehicle> getAvailableVehicles(){
-        if (availableVehicles == null) throw new NullPointerException("No Vehicles available");
-        return availableVehicles;
-    }
-
-    public boolean objectIsExistingInList(Object o, List<?> list){
+    public static boolean objectIsExistingInList(Object o, List<?> list){
         if (o == null ) throw new NullPointerException("The passed parameter object is null");
         for (Object findObject: list) {
             if (findObject.equals(o)) return true;
         }
         return false;
+    }
+
+    public List<Vehicle> getVehicles() {
+        return vehicles;
     }
 }

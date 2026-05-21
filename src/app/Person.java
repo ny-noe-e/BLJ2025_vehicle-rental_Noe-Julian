@@ -1,23 +1,54 @@
 package app;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Person {
     LocalDate birthYear;
     String name;
     String firstName;
-    String adress;
+    String address;
+    int iD;
 
-    public Person(LocalDate birthYear, String name, String firstName, String adress) {
+    private static final DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+
+    public Person(int iD, LocalDate birthYear, String name, String firstName, String address) {
+        this.iD = iD;
         this.birthYear = birthYear;
         this.name = name;
         this.firstName = firstName;
-        this.adress = adress;
+        this.address = address;
     }
 
     @Override
     public String toString() {
-        return firstName + " " + name + ", " + birthYear + ", " + adress;
+        return String.format(
+                "%-5s %-18s %-18s %-12s %-24s",
+                iD,
+                firstName,
+                name,
+                birthYear.format(DATE_FORMAT),
+                address
+        );
     }
 
+    @Override
+    public boolean equals(Object obj){
+        if (obj instanceof Person p) {
+            return this.iD == p.iD;
+        }
+        return false;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
 }
