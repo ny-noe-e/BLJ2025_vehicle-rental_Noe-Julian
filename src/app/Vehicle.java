@@ -27,4 +27,24 @@ public class Vehicle {
                 pricePerDay
         );
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Vehicle v) {
+            return this.licensePlate.equals(v.licensePlate);
+        }
+        return false;
+    }
+
+    public double getPricePerDay() {
+        return pricePerDay;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
 }

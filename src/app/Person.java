@@ -32,8 +32,23 @@ public class Person {
         );
     }
 
+    @Override
+    public boolean equals(Object obj){
+        if (obj instanceof Person p) {
+            return this.iD == p.iD;
+        }
+        return false;
+    }
 
+    public String getFirstName() {
+        return firstName;
+    }
 
+    public String getName() {
+        return name;
+    }
 
-
+    public String getAddress() {
+        return address;
+    }
 }
