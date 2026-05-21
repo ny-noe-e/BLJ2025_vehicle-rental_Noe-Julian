@@ -7,12 +7,12 @@ public class Person {
     LocalDate birthYear;
     String name;
     String firstName;
-    String adress;
+    String address;
     int iD;
 
     private static final DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("dd.MM.yyyy");
 
-    public Person(int iD, LocalDate birthYear, String name, String firstName, String adress) {
+    public Person(int iD, LocalDate birthYear, String name, String firstName, String address) {
         this.iD = iD;
         this.birthYear = birthYear;
         this.name = name;
@@ -28,7 +28,7 @@ public class Person {
                 firstName,
                 name,
                 birthYear.format(DATE_FORMAT),
-                adress
+                address
         );
     }
 
