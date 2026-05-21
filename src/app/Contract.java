@@ -8,7 +8,6 @@ import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 import static app.VehicleRentalManager.objectIsExistingInList;
-import static java.lang.Integer.parseInt;
 
 public class Contract {
     Person customer;
@@ -34,7 +33,7 @@ public class Contract {
         if (endDate.isBefore(startDate)) {
             throw new IllegalArgumentException("End date cannot be before start date. Minimum rental period is 1 day.");
         }
-        
+
         RentTime rt = new RentTime(startDate, endDate);
         vehicle.rentDates.add(rt);
         this.customer = customer;

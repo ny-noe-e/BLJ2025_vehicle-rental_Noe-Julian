@@ -89,7 +89,7 @@ public class App {
 
         System.out.println(DESIGN_LINE);
     }
-    public Vehicle getVehicleByLicenceplate(String licensePlate) {
+    public Vehicle getVehicleByLicensePlate(String licensePlate) {
         for (Vehicle vehicle : vehicles) {
             if (vehicle.licensePlate == licensePlate) {
                 return vehicle;

@@ -14,7 +14,7 @@ public class Starter {
 
         manager.createContract(
                 app.getPersonById(3),
-                app.getVehicleByLicenceplate("ZH 7043190"),
+                app.getVehicleByLicensePlate("ZH 7043190"),
                 LocalDate.of(2008, 03, 06),
                 LocalDate.of(2009, 03, 06),
                 "new"
