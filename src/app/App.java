@@ -11,29 +11,45 @@ import java.util.List;
 
 public class App {
 
-    String designLine = "----------------------------------------------------------------------------";
+    private static final String DESIGN_LINE = "----------------------------------------------------------------------------";
+    private final List<Person> persons = new ArrayList<>();
 
-    protected void PersonCreate() {
-        List<Person> persons = new ArrayList<>();
-        persons.add(new Person(LocalDate.of(1995, 4, 12), "Muster", "Max", "Bahnhofstrasse 1"));
-        persons.add(new Person(LocalDate.of(2001, 6, 4), "Mueller", "Marcel", "Geerenstrasse 14"));
-        persons.add(new Person(LocalDate.of(1998, 2, 18), "Keller", "Sofia", "Limmatstrasse 22"));
-        persons.add(new Person(LocalDate.of(1989, 11, 30), "Schneider", "Lukas", "Alpenweg 7"));
-        persons.add(new Person(LocalDate.of(2004, 8, 9), "Fischer", "Noah", "Seeufer 15"));
-        persons.add(new Person(LocalDate.of(1992, 1, 25), "Wagner", "Emma", "Bergstrasse 4"));
-        persons.add(new Person(LocalDate.of(2000, 12, 3), "Huber", "Leon", "Zentralplatz 9"));
+    public App() {
+        Persons();
+    }
 
+    private void Persons() {
+        persons.add(new Person(1, LocalDate.of(1995, 4, 12), "Muster", "Max", "Bahnhofstrasse 1"));
+        persons.add(new Person(2, LocalDate.of(2001, 6, 4), "Mueller", "Marcel", "Geerenstrasse 14"));
+        persons.add(new Person(3, LocalDate.of(1998, 2, 18), "Keller", "Sofia", "Limmatstrasse 22"));
+        persons.add(new Person(4, LocalDate.of(1989, 11, 30), "Schneider", "Lukas", "Alpenweg 7"));
+        persons.add(new Person(5, LocalDate.of(2004, 8, 9), "Fischer", "Noah", "Seeufer 15"));
+        persons.add(new Person(6, LocalDate.of(1992, 1, 25), "Wagner", "Emma", "Bergstrasse 4"));
+        persons.add(new Person(7, LocalDate.of(2000, 12, 3), "Huber", "Leon", "Zentralplatz 9"));
+    }
+
+    protected void PersonPrint() {
         System.out.println("Customers");
-        System.out.println(designLine);
-        System.out.printf("%-18s %-18s %-12s %-24s%n", "First Name", "Surname", "Birthdate", "Address");
-        System.out.println(designLine);
+        System.out.println(DESIGN_LINE);
+        System.out.printf("%-5s %-18s %-18s %-12s %-24s%n", "iD", "First Name", "Surname", "Birthdate", "Address");
+        System.out.println(DESIGN_LINE);
 
         for (Person person : persons) {
             System.out.println(person);
         }
 
-        System.out.println(designLine);
+        System.out.println(DESIGN_LINE);
     }
+
+    public Person getPersonById(int iD) {
+        for (Person person : persons) {
+            if (person.iD == iD) {
+                return person;
+            }
+        }
+        return null;
+    }
+
 
     protected void VehicleCreate() {
         List<Vehicle> vehicles = new ArrayList<>();
@@ -61,14 +77,14 @@ public class App {
         vehicles.add(new Trailer("ZH 4249399", "Boeckmann", "Tieflader", 80, 1400, 800));
 
         System.out.println("Vehicles");
-        System.out.println(designLine);
+        System.out.println(DESIGN_LINE);
         System.out.printf("%-18s %-18s %-12s %8s%n", "Brand", "Model", "PlateNr", "Price");
-        System.out.println(designLine);
+        System.out.println(DESIGN_LINE);
 
         for (Vehicle vehicle : vehicles) {
             System.out.println(vehicle);
         }
 
-        System.out.println(designLine);
+        System.out.println(DESIGN_LINE);
     }
 }
