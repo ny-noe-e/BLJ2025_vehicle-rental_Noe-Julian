@@ -3,8 +3,8 @@ package app;
 import java.time.LocalDate;
 
 public class RentTime {
-    LocalDate startRent;
-    LocalDate endRent;
+    protected LocalDate startRent;
+    protected LocalDate endRent;
 
     public RentTime(LocalDate startRent, LocalDate endRent){
         this.startRent = startRent;

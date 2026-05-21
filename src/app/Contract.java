@@ -10,11 +10,11 @@ import java.util.List;
 import static app.VehicleRentalManager.objectIsExistingInList;
 
 public class Contract {
-    Person customer;
-    Vehicle vehicle;
-    LocalDate startDate;
-    LocalDate endDate;
-    String condition;
+    private Person customer;
+    private Vehicle vehicle;
+    private LocalDate startDate;
+    private LocalDate endDate;
+    private String condition;
 
     public Contract(Person customer, Vehicle vehicle, LocalDate startDate, LocalDate endDate,
                     String condition, List<Person> denyList) {

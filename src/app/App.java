@@ -13,9 +13,9 @@ public class App {
 
     private static final String DESIGN_LINE = "----------------------------------------------------------------------------";
     private final List<Person> persons = new ArrayList<>();
-    List<Vehicle> vehicles = new ArrayList<>();
+    private final List<Vehicle> vehicles = new ArrayList<>();
 
-    public App() {
+    protected App() {
         Persons();
         Vehicles();
     }
@@ -43,7 +43,7 @@ public class App {
         System.out.println(DESIGN_LINE);
     }
 
-    public Person getPersonById(int iD) {
+    protected Person getPersonById(int iD) {
         for (Person person : persons) {
             if (person.iD == iD) {
                 return person;
@@ -89,7 +89,7 @@ public class App {
 
         System.out.println(DESIGN_LINE);
     }
-    public Vehicle getVehicleByLicensePlate(String licensePlate) {
+    protected Vehicle getVehicleByLicensePlate(String licensePlate) {
         for (Vehicle vehicle : vehicles) {
             if (vehicle.licensePlate == licensePlate) {
                 return vehicle;

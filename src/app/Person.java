@@ -4,11 +4,11 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class Person {
-    LocalDate birthYear;
-    String name;
-    String firstName;
-    String address;
-    int iD;
+    protected LocalDate birthYear;
+    protected String name;
+    protected String firstName;
+    protected String address;
+    protected int iD;
 
     private static final DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("dd.MM.yyyy");
 
