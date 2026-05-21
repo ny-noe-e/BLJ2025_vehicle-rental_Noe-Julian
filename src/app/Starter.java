@@ -8,7 +8,7 @@ public class Starter {
         App app = new App();
 
         app.PersonPrint();
-        app.VehiclePrint();
+        app.vehiclePrint();
 
         manager.addPersonToDenyList(app.getPersonById(6));
 

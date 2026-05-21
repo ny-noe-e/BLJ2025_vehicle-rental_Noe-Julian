@@ -43,7 +43,7 @@ public class Contract {
         this.condition = condition;
     }
 
-    public StringBuilder WriteToFile(Contract contract) {
+    public StringBuilder writeToFile(Contract contract) {
         String separationLine = "------------------------------------------------------";
         long rentPeriod = ChronoUnit.DAYS.between(startDate, endDate) + 1;
         double total = rentPeriod * contract.vehicle.getPricePerDay();

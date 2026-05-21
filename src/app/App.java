@@ -77,7 +77,7 @@ public class App {
         vehicles.add(new Trailer("ZH 4249399", "Boeckmann", "Tieflader", 80, 1400, 800));
     }
 
-    protected void VehiclePrint() {
+    protected void vehiclePrint() {
         System.out.println("Vehicles");
         System.out.println(DESIGN_LINE);
         System.out.printf("%-18s %-18s %-12s %8s%n", "Brand", "Model", "PlateNr", "Price");
