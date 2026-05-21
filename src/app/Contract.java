@@ -23,7 +23,13 @@ public class Contract{
 
         if (yearsOld < 18) throw new MinorAgeException("Customer is too young");
         if (objectIsExistingInList(customer, denyList)) throw new DenylistedPersonException("Customer is in deny list");
-        //TODO: Check for LeaseLengthCollision
+
+        for (RentTime rents : vehicle.rentDates){
+            if (!startDate.isAfter(rents.endRent) &&
+                    !endDate.isBefore(rents.startRent))
+                throw new LeaseLengthCollisionException
+                        ("Vehicle is rented in this time: " + rents.startRent + "-" + rents.endRent);
+        }
         RentTime rt = new RentTime(startDate, endDate);
         vehicle.rentDates.add(rt);
         this.customer = customer;
@@ -33,7 +39,7 @@ public class Contract{
         this.condition = condition;
     }
 
-    public void WrteToFile(){
+    public void WriteToFile(){
         
     }
 }
