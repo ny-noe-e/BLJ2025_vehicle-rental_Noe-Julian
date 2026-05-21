@@ -17,7 +17,7 @@ public class Starter {
         for (Vehicle v : app.getVehicles()) {
             manager.addVehicle(v.getLicensePlate(), v.getBrand(), v.getModel(), v.getPricePerDay());
         }
-
+        CLI.greetings();
         System.out.println("-----------initialised garage-----------");
         app.PersonPrint();
         app.vehiclePrint();
