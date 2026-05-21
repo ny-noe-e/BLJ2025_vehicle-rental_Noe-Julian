@@ -8,14 +8,13 @@ import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 import static app.VehicleRentalManager.objectIsExistingInList;
-import static java.lang.Integer.parseInt;
 
 public class Contract {
-    Person customer;
-    Vehicle vehicle;
-    LocalDate startDate;
-    LocalDate endDate;
-    String condition;
+    private Person customer;
+    private Vehicle vehicle;
+    private LocalDate startDate;
+    private LocalDate endDate;
+    private String condition;
 
     public Contract(Person customer, Vehicle vehicle, LocalDate startDate, LocalDate endDate,
                     String condition, List<Person> denyList) {
@@ -34,7 +33,7 @@ public class Contract {
         if (endDate.isBefore(startDate)) {
             throw new IllegalArgumentException("End date cannot be before start date. Minimum rental period is 1 day.");
         }
-        
+
         RentTime rt = new RentTime(startDate, endDate);
         vehicle.rentDates.add(rt);
         this.customer = customer;
@@ -44,19 +43,19 @@ public class Contract {
         this.condition = condition;
     }
 
-    public StringBuilder WriteToFile(Contract contract) {
+    public StringBuilder writeToFile(Contract contract) {
         String separationLine = "------------------------------------------------------";
         long rentPeriod = ChronoUnit.DAYS.between(startDate, endDate) + 1;
         double total = rentPeriod * contract.vehicle.getPricePerDay();
         StringBuilder contractFile = new StringBuilder();
-        contractFile.append(contract.customer.getName() + contract.customer.getFirstName() + "\n" + contract.customer.getAddress() + "\n");
+        contractFile.append(" " + contract.customer.getName() + contract.customer.getFirstName() + "\n " + contract.customer.getAddress() + "\n");
         contractFile.append("\n Noser Garage \n Address \n " + separationLine);
         contractFile.append("\n Vehicle: " + contract.vehicle.getBrand() + " " + vehicle.getModel());
         contractFile.append("\n Price per day: " + contract.vehicle.getPricePerDay());
-        contractFile.append("\n\n Start of rent: " + contract.startDate + "\n" + "End of rent: " + contract.endDate);
+        contractFile.append("\n\n Start of rent: " + contract.startDate + "\n" + " End of rent: " + contract.endDate);
         contractFile.append("\n Total amount of days: " + rentPeriod);
         contractFile.append("\n Total price: " + total + "\n" + separationLine + "\n");
-        contractFile.append(" Condition: " + contract.condition);
+        contractFile.append(" Condition: " + contract.condition + "\n"+separationLine);
         return contractFile;
     }
 }

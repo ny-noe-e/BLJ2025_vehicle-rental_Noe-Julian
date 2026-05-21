@@ -13,9 +13,9 @@ public class App {
 
     private static final String DESIGN_LINE = "----------------------------------------------------------------------------";
     private final List<Person> persons = new ArrayList<>();
-    List<Vehicle> vehicles = new ArrayList<>();
+    private final List<Vehicle> vehicles = new ArrayList<>();
 
-    public App() {
+    protected App() {
         Persons();
         Vehicles();
     }
@@ -43,7 +43,7 @@ public class App {
         System.out.println(DESIGN_LINE);
     }
 
-    public Person getPersonById(int iD) {
+    protected Person getPersonById(int iD) {
         for (Person person : persons) {
             if (person.iD == iD) {
                 return person;
@@ -77,7 +77,7 @@ public class App {
         vehicles.add(new Trailer("ZH 4249399", "Boeckmann", "Tieflader", 80, 1400, 800));
     }
 
-    protected void VehiclePrint() {
+    protected void vehiclePrint() {
         System.out.println("Vehicles");
         System.out.println(DESIGN_LINE);
         System.out.printf("%-18s %-18s %-12s %8s%n", "Brand", "Model", "PlateNr", "Price");
@@ -89,12 +89,20 @@ public class App {
 
         System.out.println(DESIGN_LINE);
     }
-    public Vehicle getVehicleByLicenceplate(String licensePlate) {
+    protected Vehicle getVehicleByLicensePlate(String licensePlate) {
         for (Vehicle vehicle : vehicles) {
             if (vehicle.licensePlate == licensePlate) {
                 return vehicle;
             }
         }
         return null;
+    }
+
+    public List<Person> getPersons() {
+        return persons;
+    }
+
+    public List<Vehicle> getVehicles() {
+        return vehicles;
     }
 }

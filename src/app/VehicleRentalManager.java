@@ -11,7 +11,7 @@ public class VehicleRentalManager {
     private List<Person> customerList;
     private List<Person> denyList;
 
-    public VehicleRentalManager(List<Vehicle> vehicles, List<Contract> contracts,
+    protected VehicleRentalManager(List<Vehicle> vehicles, List<Contract> contracts,
                                 List<Person> customerList, List<Person> denyList){
         this.vehicles = vehicles;
         this.contracts = contracts;
@@ -19,23 +19,25 @@ public class VehicleRentalManager {
         this.denyList = denyList;
     }
 
-    public VehicleRentalManager() {
+    protected VehicleRentalManager() {
         this.vehicles = new ArrayList<>();
         this.contracts = new ArrayList<>();
         this.customerList = new ArrayList<>();
         this.denyList = new ArrayList<>();
     }
 
-    public void addPersonToDenyList(Person person) {
+    protected void addPersonToDenyList(Person person) {
         if (objectIsExistingInList(person, denyList)) throw new ObjectAlreadyInListException("Person is already in deny list");
         else denyList.add(person);
     }
 
-    public Contract createContract(Person customer,
-                               Vehicle vehicle,
-                               LocalDate startDate,
-                               LocalDate endDate,
-                               String condition) {
+    protected Contract createContract(
+            Person customer,
+            Vehicle vehicle,
+            LocalDate startDate,
+            LocalDate endDate,
+            String condition
+    ) {
         if (customer == null) throw new NullPointerException("No person defined in parameter");
         if (vehicle == null) throw new NullPointerException("No vehicle defined in parameter");
         if (startDate == null) throw new NullPointerException("No start-date defined in parameter");
@@ -46,7 +48,7 @@ public class VehicleRentalManager {
         return contract;
     }
 
-    public void addVehicle(String licensePlate, String brand, String model, double pricePerDay){
+    protected void addVehicle(String licensePlate, String brand, String model, double pricePerDay){
         if (licensePlate == null || brand == null || model == null) throw new NullPointerException("Parameter is Null");
         if (licensePlate.isEmpty() || brand.isEmpty() || model.isEmpty())
             throw new IllegalArgumentException("Parameter is Empty");
@@ -56,15 +58,15 @@ public class VehicleRentalManager {
                     ObjectAlreadyInListException("License plate already registered");
         vehicles.add(v);
     }
-    public boolean VehicleIsAvailableInTime (Vehicle vehicle, LocalDate startTime, LocalDate endTime){
+    protected boolean vehicleIsAvailableInTime (Vehicle vehicle, LocalDate startTime, LocalDate endTime){
        //not implemented yet
         return false;
     }
-    public void returnVehicle(Vehicle vehicle){
+    protected void returnVehicle(Vehicle vehicle){
         //not implemented yet
     }
 
-    public void addCustomer(  LocalDate birthYear,
+    protected void addCustomer(  LocalDate birthYear,
     String name,
     String firstName,
     String address,
@@ -78,7 +80,7 @@ public class VehicleRentalManager {
        customerList.add(p);
     }
 
-    public static boolean objectIsExistingInList(Object o, List<?> list){
+    protected static boolean objectIsExistingInList(Object o, List<?> list){
         if (o == null ) throw new NullPointerException("The passed parameter object is null");
         for (Object findObject: list) {
             if (findObject.equals(o)) return true;
@@ -86,7 +88,7 @@ public class VehicleRentalManager {
         return false;
     }
 
-    public List<Vehicle> getVehicles() {
+    protected List<Vehicle> getVehicles() {
         return vehicles;
     }
 }

@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Vehicle {
-    String licensePlate;
-    String brand;
-    String model;
-    double pricePerDay;
-    List<RentTime> rentDates;
+    protected String licensePlate;
+    protected String brand;
+    protected String model;
+    protected double pricePerDay;
+    protected List<RentTime> rentDates;
     public Vehicle(String licensePlate, String brand, String model, double pricePerDay) {
         this.licensePlate = licensePlate;
         this.brand = brand;
@@ -46,5 +46,9 @@ public class Vehicle {
 
     public String getBrand() {
         return brand;
+    }
+
+    public String getLicensePlate() {
+        return licensePlate;
     }
 }
