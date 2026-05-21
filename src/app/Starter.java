@@ -1,12 +1,26 @@
 package app;
 
+import java.time.LocalDate;
+
 public class Starter {
     public static void main(String[] args){
-        App app = new App();
-        app.PersonPrint();
-        app.VehicleCreate();
-
         VehicleRentalManager manager = new VehicleRentalManager();
+        App app = new App();
+
+        app.PersonPrint();
+        app.VehiclePrint();
+
+
         manager.addPersonToDenyList(app.getPersonById(6));
+
+        manager.createContract(
+                app.getPersonById(3),
+                app.getVehicleByLicenceplate("ZH 7043190"),
+                LocalDate.of(2008, 03, 06),
+                LocalDate.of(2009, 03, 06),
+                "new"
+        );
+
+
     }
 }

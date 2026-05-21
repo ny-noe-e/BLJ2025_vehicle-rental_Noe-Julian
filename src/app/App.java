@@ -13,9 +13,11 @@ public class App {
 
     private static final String DESIGN_LINE = "----------------------------------------------------------------------------";
     private final List<Person> persons = new ArrayList<>();
+    List<Vehicle> vehicles = new ArrayList<>();
 
     public App() {
         Persons();
+        Vehicles();
     }
 
     private void Persons() {
@@ -50,9 +52,7 @@ public class App {
         return null;
     }
 
-
-    protected void VehicleCreate() {
-        List<Vehicle> vehicles = new ArrayList<>();
+    private void Vehicles(){
         vehicles.add(new Camper("ZH 7362049", "Hypermobil", "Hypermobil", 130.0, 3.5));
         vehicles.add(new Camper("ZH 5296841", "VW", "California", 140, 2.0));
 
@@ -75,7 +75,9 @@ public class App {
         vehicles.add(new Trailer("ZH 9440197", "Boeckmann", "Hochlader", 120, 2600, 1350));
         vehicles.add(new Trailer("ZH 3945198", "Boeckmann", "Bootsanhaenger", 180, 3400, 2400));
         vehicles.add(new Trailer("ZH 4249399", "Boeckmann", "Tieflader", 80, 1400, 800));
+    }
 
+    protected void VehiclePrint() {
         System.out.println("Vehicles");
         System.out.println(DESIGN_LINE);
         System.out.printf("%-18s %-18s %-12s %8s%n", "Brand", "Model", "PlateNr", "Price");
@@ -86,5 +88,13 @@ public class App {
         }
 
         System.out.println(DESIGN_LINE);
+    }
+    public Vehicle getVehicleByLicenceplate(String licensePlate) {
+        for (Vehicle vehicle : vehicles) {
+            if (vehicle.licensePlate == licensePlate) {
+                return vehicle;
+            }
+        }
+        return null;
     }
 }
