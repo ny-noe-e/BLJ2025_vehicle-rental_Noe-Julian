@@ -10,7 +10,6 @@ public class Starter {
         app.PersonPrint();
         app.VehiclePrint();
 
-
         manager.addPersonToDenyList(app.getPersonById(6));
 
         manager.createContract(
