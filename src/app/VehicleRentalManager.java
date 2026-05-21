@@ -51,7 +51,6 @@ public class VehicleRentalManager {
         if (objectIsExistingInList(vehicle, vehicles)) throw new
                     ObjectAlreadyInListException("License plate already registered");
         vehicles.add(vehicle);
-        availableVehicles.add(vehicle);
     }
     public void returnVehicle(Vehicle vehicle){
         //not implemented yet
@@ -61,11 +60,6 @@ public class VehicleRentalManager {
         if (objectIsExistingInList(customer, customerList))
             throw new ObjectAlreadyInListException("Customer already registered");
        customerList.add(customer);
-    }
-
-    public List<Vehicle> getAvailableVehicles(){
-        if (availableVehicles == null) throw new NullPointerException("No Vehicles available");
-        return availableVehicles;
     }
 
     public static boolean objectIsExistingInList(Object o, List<?> list){
