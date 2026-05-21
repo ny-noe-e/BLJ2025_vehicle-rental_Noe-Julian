@@ -45,7 +45,7 @@ public class CLI {
         System.out.println("-  [0] Exit");
         int input = -1;
         do {input = validateInput(0,3);
-        } while (input != -1);
+        } while (input == -1);
         switch (input){
             case 0: return;
             case 1: customerMenu(); break;
@@ -64,8 +64,16 @@ public class CLI {
         System.out.println("- [0] Back");
         int input = -1;
         do {input = validateInput(0,5);
-        } while (input != -1);
-        return input;
+        } while (input == -1);
+        switch (input){
+            case 0 -> menu();
+            case 1 -> ;
+            case 2 -> ;
+            case 3 -> ;
+            case 4 -> ;
+            case 5 -> ;
+            case 6 -> ;
+        }
     }
 
 
@@ -78,7 +86,7 @@ public class CLI {
         System.out.println("- [0] Back");
         int input = -1;
         do {input = validateInput(0,5);
-        } while (input != -1);
+        } while (input == -1);
         return input;
     }
 
@@ -90,7 +98,7 @@ public class CLI {
         System.out.println("- [0] Back");
         int input = -1;
         do {input = validateInput(0,3);
-        } while (input != -1);
+        } while (input == -1);
         return input;
     }
 

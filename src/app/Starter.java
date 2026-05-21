@@ -8,8 +8,6 @@ public class Starter {
         VehicleRentalManager manager = new VehicleRentalManager();
         App app = new App();
 
-        app.PersonPrint();
-        app.vehiclePrint();
 
         for (Person p : app.getPersons()) {
             manager.addCustomer(p.getBirthYear(), p.getName(), p.getFirstName(), p.getAddress(), p.getiD());
@@ -22,11 +20,20 @@ public class Starter {
         app.PersonPrint();
         app.vehiclePrint();
         System.out.println("----------------------------------------\n");
+        CLI.menu();
 
+
+
+
+        /*
         manager.addPersonToDenyList(app.getPersonById(6));
 
+
         Person minorPerson = new Person(99, LocalDate.of(2012, 5, 20), "Frischling", "Fritz", "Jugendweg 4");
-        manager.addCustomer( LocalDate.of(2012,5,20), "Minor", "Mouse",  "Washedstreet 67", 99);
+        manager.addCustomer( LocalDate.of(2012,5,20), "Minor", "Mouse",  "Washedstreet 99", 99);
+
+
+
 
 
         System.out.println("### CASE 1: Valid Contract (should work) ###");
@@ -114,5 +121,7 @@ public class Starter {
             System.out.println("-> Unexpected Exception happened");
             System.out.println("Abgefangen: " + e + "\n----------------------------------------");
         }
+    */
     }
+
 }
