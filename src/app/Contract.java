@@ -4,9 +4,11 @@ import exceptions.*;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 import static app.VehicleRentalManager.objectIsExistingInList;
+import static java.lang.Integer.parseInt;
 
 public class Contract {
     Person customer;
@@ -39,7 +41,18 @@ public class Contract {
         this.condition = condition;
     }
 
-    public void WriteToFile() {
-
+    public StringBuilder WriteToFile(Contract contract) {
+        String separationLine = "------------------------------------------------------";
+        long rentPeriod = ChronoUnit.DAYS.between(startDate, endDate);
+        double total = rentPeriod * contract.vehicle.pricePerDay;
+        StringBuilder contractFile = new StringBuilder();
+        contractFile.append(contract.customer.name + contract.customer.firstName + "\n" + contract.customer.address + "\n");
+        contractFile.append("\n Noser Garage \n Address \n " + separationLine);
+        contractFile.append("\n Vehicle: " + contract.vehicle.brand + " " + vehicle.model);
+        contractFile.append("\n Price per day: " + contract.vehicle.pricePerDay);
+        contractFile.append("\n\n Start of rent: " + contract.startDate + "\n" + "End of rent: " + contract.endDate);
+        contractFile.append("\n Total amount of days: " + rentPeriod);
+        contractFile.append("\n Total price: " + total + "\n" + separationLine + "\n");
+        return contractFile;
     }
 }

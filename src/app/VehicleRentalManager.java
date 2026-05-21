@@ -52,6 +52,10 @@ public class VehicleRentalManager {
                     ObjectAlreadyInListException("License plate already registered");
         vehicles.add(vehicle);
     }
+    public boolean VehicleIsAvailableInTime (Vehicle vehicle, LocalDate startTime, LocalDate endTime){
+       //not implemented yet
+        return false;
+    }
     public void returnVehicle(Vehicle vehicle){
         //not implemented yet
     }
