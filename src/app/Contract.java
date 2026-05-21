@@ -53,6 +53,7 @@ public class Contract {
         contractFile.append("\n\n Start of rent: " + contract.startDate + "\n" + "End of rent: " + contract.endDate);
         contractFile.append("\n Total amount of days: " + rentPeriod);
         contractFile.append("\n Total price: " + total + "\n" + separationLine + "\n");
+        contractFile.append(" Condition: " + contract.condition);
         return contractFile;
     }
 }
