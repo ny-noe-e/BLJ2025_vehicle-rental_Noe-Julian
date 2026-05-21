@@ -6,18 +6,18 @@ public class Person {
     LocalDate birthYear;
     String name;
     String firstName;
-    String adress;
+    String address;
 
-    public Person(LocalDate birthYear, String name, String firstName, String adress) {
+    public Person(LocalDate birthYear, String name, String firstName, String address) {
         this.birthYear = birthYear;
         this.name = name;
         this.firstName = firstName;
-        this.adress = adress;
+        this.address = address;
     }
 
     @Override
     public String toString() {
-        return firstName + " " + name + ", " + birthYear + ", " + adress;
+        return firstName + " " + name + ", " + birthYear + ", " + address;
     }
 
 }

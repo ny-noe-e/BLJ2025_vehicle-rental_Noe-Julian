@@ -7,15 +7,13 @@ import java.util.List;
 
 public class VehicleRentalManager {
     private List<Vehicle> vehicles;
-    private List<Vehicle> availableVehicles;
     private List<Contract> contracts;
     private List<Person> customerList;
     private List<Person> denyList;
 
-    public VehicleRentalManager(List<Vehicle> vehicles, List<Vehicle> availableVehicles, List<Contract> contracts,
+    public VehicleRentalManager(List<Vehicle> vehicles, List<Contract> contracts,
                                 List<Person> customerList, List<Person> denyList){
         this.vehicles = vehicles;
-        this.availableVehicles = availableVehicles;
         this.contracts = contracts;
         this.customerList = customerList;
         this.denyList = denyList;
@@ -23,7 +21,6 @@ public class VehicleRentalManager {
 
     public VehicleRentalManager() {
         this.vehicles = new ArrayList<>();
-        this.availableVehicles = new ArrayList<>();
         this.contracts = new ArrayList<>();
         this.customerList = new ArrayList<>();
         this.denyList = new ArrayList<>();
@@ -44,9 +41,8 @@ public class VehicleRentalManager {
         if (startDate == null) throw new NullPointerException("No start-date defined in parameter");
         if (endDate == null) throw new NullPointerException("No end-date defined in parameter");
         if (condition == null) condition = "No condition defined";
-        Contract contract = new Contract(customer, vehicle, startDate, endDate, condition);
+        Contract contract = new Contract(customer, vehicle, startDate, endDate, condition, denyList);
         contracts.add(contract);
-        availableVehicles.remove(vehicle);
         return contract;
     }
 
@@ -72,7 +68,7 @@ public class VehicleRentalManager {
         return availableVehicles;
     }
 
-    public boolean objectIsExistingInList(Object o, List<?> list){
+    public static boolean objectIsExistingInList(Object o, List<?> list){
         if (o == null ) throw new NullPointerException("The passed parameter object is null");
         for (Object findObject: list) {
             if (findObject.equals(o)) return true;
