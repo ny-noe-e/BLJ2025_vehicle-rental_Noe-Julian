@@ -31,7 +31,10 @@ public class Contract {
                 throw new LeaseLengthCollisionException
                         ("Vehicle is rented in this time: " + rents.startRent + "-" + rents.endRent);
         }
-
+        if (endDate.isBefore(startDate)) {
+            throw new IllegalArgumentException("End date cannot be before start date. Minimum rental period is 1 day.");
+        }
+        
         RentTime rt = new RentTime(startDate, endDate);
         vehicle.rentDates.add(rt);
         this.customer = customer;
