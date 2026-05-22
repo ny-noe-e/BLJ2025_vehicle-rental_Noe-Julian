@@ -43,6 +43,7 @@ public class App {
         System.out.println(DESIGN_LINE);
     }
 
+
     protected Person getPersonById(int iD) {
         for (Person person : persons) {
             if (person.iD == iD) {
@@ -91,7 +92,7 @@ public class App {
     }
     protected Vehicle getVehicleByLicensePlate(String licensePlate) {
         for (Vehicle vehicle : vehicles) {
-            if (vehicle.licensePlate == licensePlate) {
+            if (vehicle.licensePlate.equals(licensePlate)) {
                 return vehicle;
             }
         }

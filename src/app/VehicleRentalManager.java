@@ -58,23 +58,11 @@ public class VehicleRentalManager {
                     ObjectAlreadyInListException("License plate already registered");
         vehicles.add(v);
     }
-    protected boolean vehicleIsAvailableInTime (Vehicle vehicle, LocalDate startTime, LocalDate endTime){
-       //not implemented yet
-        return false;
-    }
-    protected void returnVehicle(Vehicle vehicle){
-        //not implemented yet
-    }
 
-    protected void addCustomer(  LocalDate birthYear,
-    String name,
-    String firstName,
-    String address,
-    int iD){
-        if (name == null || firstName == null || address == null) throw new NullPointerException("Parameter is Null");
-        if (name.isEmpty() || firstName.isEmpty() || address.isEmpty())
+    protected void addCustomer(Person p){
+        if (p.name == null || p.firstName == null || p.address == null) throw new NullPointerException("Parameter is Null");
+        if (p.name.isEmpty() || p.firstName.isEmpty() || p.address.isEmpty())
             throw new IllegalArgumentException("Parameter is Empty");
-        Person p = new Person(iD, birthYear, name, firstName, address);
         if (objectIsExistingInList(p, customerList))
             throw new ObjectAlreadyInListException("Customer already registered");
        customerList.add(p);
