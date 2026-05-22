@@ -3,8 +3,6 @@ package app;
 import java.time.LocalDate;
 import java.util.Scanner;
 
-import static java.lang.Integer.parseInt;
-
 public class UserInputs {
 
     private static Scanner sc = new Scanner(System.in);
@@ -17,7 +15,7 @@ public class UserInputs {
         String address;
         try {
             System.out.println("Enter customer ID: ");
-            id = parseInt(sc.nextLine());
+            id = Integer.parseInt(sc.nextLine());
             System.out.println("Enter name: ");
             name = sc.nextLine();
             if (name == null || name.length() < 2) throw new

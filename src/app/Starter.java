@@ -10,7 +10,7 @@ public class Starter {
 
 
         for (Person p : app.getPersons()) {
-            manager.addCustomer(p.getBirthYear(), p.getName(), p.getFirstName(), p.getAddress(), p.getiD());
+            manager.addCustomer(p);
         }
         for (Vehicle v : app.getVehicles()) {
             manager.addVehicle(v.getLicensePlate(), v.getBrand(), v.getModel(), v.getPricePerDay());
