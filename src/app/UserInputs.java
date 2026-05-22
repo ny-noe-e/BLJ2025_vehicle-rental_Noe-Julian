@@ -108,16 +108,9 @@ public class UserInputs {
         return app.getVehicleByLicensePlate(licenseplate);
     }
 
-    protected Contract createContractCli(List persons, App app){
-        Person customer;
-        Vehicle vehicle;
-        LocalDate startDate;
-        LocalDate endDate;
+    protected String getConditionCLI(){
         String condition;
-
-        try{
-            customer = getPersonCLI(app);
-            
-        }
+        System.out.println("Enter condition (optional): ");
+        return(condition = sc.nextLine());
     }
 }
