@@ -135,7 +135,7 @@ public class CLI {
             case 1 ->
                     ;
             case 2 ->
-                    manager.createContract();
+                    manager.createContract(ui.getPersonCLI(app), ui.getVehicleCLI(app), ui.getStartDateCLI(), ui.getEndDateCLI(), );
             case 3 -> ;
         }
     }

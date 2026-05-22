@@ -64,7 +64,7 @@ public class UserInputs {
     protected LocalDate getEndDateCLI(){
         LocalDate endDate;
         try {
-            System.out.println("Enter birthdate (yyyy-MM-dd): ");
+            System.out.println("Enter enddate (yyyy-MM-dd): ");
             endDate = LocalDate.parse(sc.nextLine());
         }catch (java.time.format.DateTimeParseException e) {
             System.out.println("Error: Invalid date format! Please use yyyy-MM-dd (e.g., 2004-08-09).");
@@ -75,6 +75,22 @@ public class UserInputs {
         }
         return endDate;
     }
+
+    protected LocalDate getStartDateCLI(){
+        LocalDate startDate;
+        try {
+            System.out.println("Enter startdate (yyyy-MM-dd): ");
+            startDate = LocalDate.parse(sc.nextLine());
+        }catch (java.time.format.DateTimeParseException e) {
+            System.out.println("Error: Invalid date format! Please use yyyy-MM-dd (e.g., 2004-08-09).");
+            return null;
+        }catch (Exception e){
+            System.out.println("unexpected Error: "+ e.getMessage());
+            return null;
+        }
+        return startDate;
+    }
+    
 
     protected Vehicle getVehicleCLI(App app) {
         String licenseplate;
