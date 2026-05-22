@@ -61,6 +61,21 @@ public class UserInputs {
         return app.getPersonById(id);
     }
 
+    protected LocalDate getEndDateCLI(){
+        LocalDate endDate;
+        try {
+            System.out.println("Enter birthdate (yyyy-MM-dd): ");
+            endDate = LocalDate.parse(sc.nextLine());
+        }catch (java.time.format.DateTimeParseException e) {
+            System.out.println("Error: Invalid date format! Please use yyyy-MM-dd (e.g., 2004-08-09).");
+            return null;
+        }catch (Exception e){
+            System.out.println("unexpected Error: "+ e.getMessage());
+            return null;
+        }
+        return endDate;
+    }
+
     protected Contract createContractCli(List persons, App app){
         Person customer;
         Vehicle vehicle;
