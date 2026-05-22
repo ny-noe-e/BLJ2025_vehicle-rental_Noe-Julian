@@ -7,7 +7,7 @@ public class Starter {
     public static void main(String[] args){
         VehicleRentalManager manager = new VehicleRentalManager();
         App app = new App();
-        CLI cli = new CLI(manager, app.getVehicles(), app.getPersons());
+        CLI cli = new CLI(manager, app.getVehicles(), app.getPersons(), app);
 
         for (Person p : app.getPersons()) {
             manager.addCustomer(p);

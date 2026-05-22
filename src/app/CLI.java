@@ -8,15 +8,18 @@ import static java.lang.Integer.parseInt;
 
 public class CLI {
     static Scanner sc = new Scanner(System.in);
-    private List<Person> persons;
-    private List<Vehicle> vehicles;
-    private VehicleRentalManager manager;
+    private static List<Person> persons;
+    private static List<Vehicle> vehicles;
+    private static VehicleRentalManager manager;
+    private static App app;
 
-    public CLI(VehicleRentalManager manager, List<Vehicle> vehicles, List<Person> persons) {
+    public CLI(VehicleRentalManager manager, List<Vehicle> vehicles, List<Person> persons, App app) {
         this.manager = manager;
         this.vehicles = vehicles;
         this.persons = persons;
+        this.app = app;
     }
+    static UserInputs ui = new UserInputs();
 
     protected static void greetings(){
         System.out.println("              ____----------- _____");
@@ -58,10 +61,9 @@ public class CLI {
         do {input = validateInput(0,3);
         } while (input == -1);
         switch (input){
-            case 0: return;
-            case 1: customerMenu(); break;
-            case 2: vehicleMenu(); break;
-            case 3: rentingMenu(); break;
+            case 1 -> customerMenu();
+            case 2 -> vehicleMenu();
+            case 3 -> rentingMenu();
         }
     }
 
@@ -73,20 +75,26 @@ public class CLI {
         System.out.println("- [4] Display Customer");
         System.out.println("- [5] Ban Customer");
         System.out.println("- [0] Back");
+
         int input = -1;
         do {input = validateInput(0,5);
         } while (input == -1);
         switch (input){
-            case 0 -> menu();
-            case 1 -> ;
-            case 2 -> ;
-            case 3 -> ;
-            case 4 -> ;
-            case 5 -> ;
-            case 6 -> ;
+            case 0 ->
+                    menu();
+            case 1 ->
+                    manager.addCustomer(ui.createPersonCLI());
+            case 2 ->
+                    System.out.println("Under construction");
+            case 3 ->
+                    System.out.println("Under construction");
+            case 4 ->
+                    System.out.println("Under construction");
+
+            case 5 ->
+                    manager.addPersonToDenyList();
         }
     }
-
 
     protected static int vehicleMenu(){
         System.out.println("#----Vehicle Menu----#");
@@ -98,7 +106,18 @@ public class CLI {
         int input = -1;
         do {input = validateInput(0,5);
         } while (input == -1);
-        return input;
+        switch (input){
+            case 0 ->
+                    menu();
+            case 1 ->
+                    ;
+            case 2 ->
+                    ;
+            case 3 ->
+                    ;
+            case 4 ->
+                    ;
+        }
     }
 
     protected static int rentingMenu(){
@@ -110,7 +129,15 @@ public class CLI {
         int input = -1;
         do {input = validateInput(0,3);
         } while (input == -1);
-        return input;
+        switch(input){
+            case 0 ->
+                    menu();
+            case 1 ->
+                    ;
+            case 2 ->
+                    manager.createContract();
+            case 3 -> ;
+        }
     }
 
 }

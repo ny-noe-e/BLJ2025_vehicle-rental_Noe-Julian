@@ -1,13 +1,14 @@
 package app;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Scanner;
 
 public class UserInputs {
 
     private static Scanner sc = new Scanner(System.in);
 
-    protected Person createPersonCLI() {
+    protected Person createPersonCLI(){
         int id;
         LocalDate birthYear;
         String name;
@@ -32,7 +33,7 @@ public class UserInputs {
             birthYear = LocalDate.parse(sc.nextLine());
             return new Person(id, birthYear, name, firstName, address);
 
-        } catch (NumberFormatException e) {
+        }catch (NumberFormatException e) {
             System.out.println("Error: ID must be a valid number!");
             return null;
         } catch (java.time.format.DateTimeParseException e) {
@@ -44,7 +45,7 @@ public class UserInputs {
         }
     }
 
-    protected Person getPersonCLI() {
+    protected Person getPersonCLI(App app) {
         int id;
         try {
             System.out.println("Enter ID of desired customer: ");
@@ -57,6 +58,19 @@ public class UserInputs {
             System.out.println("Unexpected Error: " + e.getMessage());
             return null;
         }
-        return App.getPersonById();
+        return app.getPersonById(id);
+    }
+
+    protected Contract createContractCli(List persons, App app){
+        Person customer;
+        Vehicle vehicle;
+        LocalDate startDate;
+        LocalDate endDate;
+        String condition;
+
+        try{
+            customer = getPersonCLI(app);
+            
+        }
     }
 }
