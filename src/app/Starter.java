@@ -2,6 +2,8 @@ package app;
 
 import exceptions.*;
 
+import java.time.LocalDate;
+
 
 public class Starter {
     public static void main(String[] args){
@@ -23,14 +25,13 @@ public class Starter {
         cli.menu();
 
 
-
-
-        /*
+        System.out.println("\n----------------------------------------\n");
+        System.out.println("Testing:\n");
+        System.out.println("----------------------------------------\n");
         manager.addPersonToDenyList(app.getPersonById(6));
 
-
         Person minorPerson = new Person(99, LocalDate.of(2012, 5, 20), "Frischling", "Fritz", "Jugendweg 4");
-        manager.addCustomer( LocalDate.of(2012,5,20), "Minor", "Mouse",  "Washedstreet 99", 99);
+        manager.addCustomer(minorPerson);
 
 
 
@@ -107,21 +108,20 @@ public class Starter {
 
         } catch (DenylistedPersonException e){
             System.out.println("-> Person got successfully denied");
-            System.out.println("Abgefangen: " + e.getMessage() + "\n----------------------------------------");
+            System.out.println("Caught: " + e.getMessage() + "\n----------------------------------------");
         } catch (IllegalArgumentException e){
             System.out.println("-> Invalid Date got successfully detected");
-            System.out.println("Abgefangen: " + e.getMessage() + "\n----------------------------------------");
+            System.out.println("Caught: " + e.getMessage() + "\n----------------------------------------");
         } catch (LeaseLengthCollisionException e){
             System.out.println("-> Already rent vehicle detected");
-            System.out.println("Abgefangen: " + e.getMessage() + "\n----------------------------------------");
+            System.out.println("Caught: " + e.getMessage() + "\n----------------------------------------");
         } catch (MinorAgeException e) {
             System.out.println("-> Minor age successfully detected");
-            System.out.println("Abgefangen: " + e.getMessage() + "\n----------------------------------------");
+            System.out.println("Caught: " + e.getMessage() + "\n----------------------------------------");
         } catch (Exception e){
             System.out.println("-> Unexpected Exception happened");
-            System.out.println("Abgefangen: " + e + "\n----------------------------------------");
+            System.out.println("Caught: " + e + "\n----------------------------------------");
         }
-    */
     }
 
 }
