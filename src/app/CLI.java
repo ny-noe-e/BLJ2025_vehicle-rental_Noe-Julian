@@ -135,8 +135,10 @@ public class CLI {
                     menu();
             case 1 ->
                     System.out.println("Under construction");
-            case 2 ->
-                    System.out.println(contract.writeToFile(manager.createContract(ui.getPersonCLI(app), ui.getVehicleCLI(app), ui.getStartDateCLI(), ui.getEndDateCLI(), ui.getConditionCLI())));
+            case 2 -> {
+                Contract contract = manager.createContract(ui.getPersonCLI(app), ui.getVehicleCLI(app), ui.getStartDateCLI(), ui.getEndDateCLI(), ui.getConditionCLI());
+                System.out.println(contract.writeToFile(contract));
+            }
             case 3 ->
                     System.out.println("Under construction");
         }

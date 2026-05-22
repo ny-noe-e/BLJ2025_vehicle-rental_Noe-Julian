@@ -1,13 +1,13 @@
 package app;
 
 import exceptions.*;
-import java.time.LocalDate;
+
 
 public class Starter {
     public static void main(String[] args){
         VehicleRentalManager manager = new VehicleRentalManager();
         App app = new App();
-        CLI cli = new CLI(manager, app.getVehicles(), app.getPersons(), app);
+        CLI cli = new CLI(manager, app.getVehicles(), app.getPersons(), app, null);
 
         for (Person p : app.getPersons()) {
             manager.addCustomer(p);
