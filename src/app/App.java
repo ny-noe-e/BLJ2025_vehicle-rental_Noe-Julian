@@ -92,7 +92,7 @@ public class App {
     }
     protected Vehicle getVehicleByLicensePlate(String licensePlate) {
         for (Vehicle vehicle : vehicles) {
-            if (vehicle.licensePlate == licensePlate) {
+            if (vehicle.licensePlate.equals(licensePlate)) {
                 return vehicle;
             }
         }

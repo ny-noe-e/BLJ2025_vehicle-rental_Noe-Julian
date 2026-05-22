@@ -1,6 +1,5 @@
 package app;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -12,12 +11,14 @@ public class CLI {
     private static List<Vehicle> vehicles;
     private static VehicleRentalManager manager;
     private static App app;
+    private static Contract contract;
 
-    public CLI(VehicleRentalManager manager, List<Vehicle> vehicles, List<Person> persons, App app) {
+    public CLI(VehicleRentalManager manager, List<Vehicle> vehicles, List<Person> persons, App app, Contract contract) {
         this.manager = manager;
         this.vehicles = vehicles;
         this.persons = persons;
         this.app = app;
+        this.contract = contract;
     }
     static UserInputs ui = new UserInputs();
 
@@ -67,7 +68,7 @@ public class CLI {
         }
     }
 
-    protected static int customerMenu(){
+    protected static void customerMenu(){
         System.out.println("#----Customer Menu----#");
         System.out.println("- [1] Add Customer");
         System.out.println("- [2] Remove Customer");
@@ -92,11 +93,11 @@ public class CLI {
                     System.out.println("Under construction");
 
             case 5 ->
-                    manager.addPersonToDenyList();
+                    manager.addPersonToDenyList(ui.createPersonCLI());
         }
     }
 
-    protected static int vehicleMenu(){
+    protected static void vehicleMenu(){
         System.out.println("#----Vehicle Menu----#");
         System.out.println("- [1] Add Vehicle");
         System.out.println("- [2] Remove Vehicle");
@@ -110,17 +111,17 @@ public class CLI {
             case 0 ->
                     menu();
             case 1 ->
-                    ;
+                    System.out.println("Under construction");
             case 2 ->
-                    ;
+                    System.out.println("Under construction");
             case 3 ->
-                    ;
+                    System.out.println("Under construction");
             case 4 ->
-                    ;
+                    System.out.println("Under construction");
         }
     }
 
-    protected static int rentingMenu(){
+    protected static void rentingMenu(){
         System.out.println("#----Renting Menu----#");
         System.out.println("- [1] Display Contracts");
         System.out.println("- [2] Make Contract");
@@ -133,10 +134,11 @@ public class CLI {
             case 0 ->
                     menu();
             case 1 ->
-                    ;
+                    System.out.println("Under construction");
             case 2 ->
-                    manager.createContract(ui.getPersonCLI(app), ui.getVehicleCLI(app), ui.getStartDateCLI(), ui.getEndDateCLI(), ui.getConditionCLI());
-            case 3 -> ;
+                    System.out.println(contract.writeToFile(manager.createContract(ui.getPersonCLI(app), ui.getVehicleCLI(app), ui.getStartDateCLI(), ui.getEndDateCLI(), ui.getConditionCLI())));
+            case 3 ->
+                    System.out.println("Under construction");
         }
     }
 

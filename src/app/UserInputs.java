@@ -97,6 +97,7 @@ public class UserInputs {
         try {
             System.out.println("Enter plate number of desired Vehicle: ");
             licenseplate = sc.nextLine();
+            licenseplate = licenseplate.trim();
             if (licenseplate == null) throw new IllegalArgumentException("Plate nr has to be valid");
         } catch (IllegalArgumentException e) {
             System.out.println("Error: " + e.getMessage());
