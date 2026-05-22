@@ -61,6 +61,22 @@ public class UserInputs {
         return app.getPersonById(id);
     }
 
+    protected Vehicle getVehicleCLI(App app) {
+        String licenseplate;
+        try {
+            System.out.println("Enter plate number of desired Vehicle: ");
+            licenseplate = sc.nextLine();
+            if (licenseplate == null) throw new IllegalArgumentException("Plate nr has to be valid");
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage());
+            return null;
+        } catch (Exception e){
+            System.out.println("Unexpected Error: " + e.getMessage());
+            return null;
+        }
+        return app.getVehicleByLicensePlate(licenseplate);
+    }
+
     protected Contract createContractCli(List persons, App app){
         Person customer;
         Vehicle vehicle;
@@ -70,6 +86,7 @@ public class UserInputs {
 
         try{
             customer = getPersonCLI(app);
+            vehicle = getVehicleCLI(app);
             
         }
     }
