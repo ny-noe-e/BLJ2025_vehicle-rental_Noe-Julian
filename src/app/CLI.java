@@ -1,11 +1,22 @@
 package app;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import static java.lang.Integer.parseInt;
 
 public class CLI {
     static Scanner sc = new Scanner(System.in);
+    private List<Person> persons;
+    private List<Vehicle> vehicles;
+    private VehicleRentalManager manager;
+
+    public CLI(VehicleRentalManager manager, List<Vehicle> vehicles, List<Person> persons) {
+        this.manager = manager;
+        this.vehicles = vehicles;
+        this.persons = persons;
+    }
 
     protected static void greetings(){
         System.out.println("              ____----------- _____");

@@ -7,7 +7,7 @@ public class Starter {
     public static void main(String[] args){
         VehicleRentalManager manager = new VehicleRentalManager();
         App app = new App();
-
+        CLI cli = new CLI(manager, app.getVehicles(), app.getPersons());
 
         for (Person p : app.getPersons()) {
             manager.addCustomer(p);
@@ -15,12 +15,12 @@ public class Starter {
         for (Vehicle v : app.getVehicles()) {
             manager.addVehicle(v.getLicensePlate(), v.getBrand(), v.getModel(), v.getPricePerDay());
         }
-        CLI.greetings();
+        cli.greetings();
         System.out.println("-----------initialised garage-----------");
         app.PersonPrint();
         app.vehiclePrint();
         System.out.println("----------------------------------------\n");
-        CLI.menu();
+        cli.menu();
 
 
 

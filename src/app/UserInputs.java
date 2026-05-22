@@ -7,7 +7,7 @@ public class UserInputs {
 
     private static Scanner sc = new Scanner(System.in);
 
-    protected Person createPersonCLI(){
+    protected Person createPersonCLI() {
         int id;
         LocalDate birthYear;
         String name;
@@ -32,7 +32,7 @@ public class UserInputs {
             birthYear = LocalDate.parse(sc.nextLine());
             return new Person(id, birthYear, name, firstName, address);
 
-        }catch (NumberFormatException e) {
+        } catch (NumberFormatException e) {
             System.out.println("Error: ID must be a valid number!");
             return null;
         } catch (java.time.format.DateTimeParseException e) {
@@ -42,5 +42,21 @@ public class UserInputs {
             System.out.println("Error: " + e.getMessage());
             return null;
         }
+    }
+
+    protected Person getPersonCLI() {
+        int id;
+        try {
+            System.out.println("Enter ID of desired customer: ");
+            id = Integer.parseInt(sc.nextLine());
+            if (id < 0) throw new IllegalArgumentException("ID has to be 0 or higher");
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage());
+            return null;
+        } catch (Exception e){
+            System.out.println("Unexpected Error: " + e.getMessage());
+            return null;
+        }
+        return App.getPersonById();
     }
 }
